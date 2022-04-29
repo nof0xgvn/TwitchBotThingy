@@ -39,7 +39,8 @@ var deaths = parseInt(fs.readFileSync('./deaths.txt'));
 // Called every time a message comes in
 function onMessageHandler (channel, usr, msg, self) {
   if (self) { return; } // Ignore messages from the bot
-
+  if (msg.charAt(0) != '!') { return; } // skip if message doesn't start with !
+  
   //msg to array
   var [command, ...rest] = msg.split(' ');
   command = command.toLowerCase();
